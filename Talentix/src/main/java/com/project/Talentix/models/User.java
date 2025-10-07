@@ -12,16 +12,16 @@ public class User {
 	int userId;
 	
 	
-	String firstName;
-	String lastName;
+	String name;
 	 @Column(unique = true, nullable = false)
 	String email;
 	 @Column(nullable = false)
 	String password;
-	String phoneNumber;
+	int phoneNumber;
 	@Column(nullable = false)
 	String role;
 	
+	String CompanyName; // for employer
 	
 	@ManyToMany(mappedBy = "applicants")
     @ElementCollection
@@ -49,20 +49,22 @@ public class User {
 		 this.userId = userId;
 	 }
 
-	 public String getFirstName() {
-		 return firstName;
+
+
+	 public String getName() {
+		return name;
+	}
+
+	 public void setName(String name) {
+		 this.name = name;
 	 }
 
-	 public void setFirstName(String firstName) {
-		 this.firstName = firstName;
+	 public String getCompanyName() {
+		 return CompanyName;
 	 }
 
-	 public String getLastName() {
-		 return lastName;
-	 }
-
-	 public void setLastName(String lastName) {
-		 this.lastName = lastName;
+	 public void setCompanyName(String companyName) {
+		 CompanyName = companyName;
 	 }
 
 	 public String getEmail() {
@@ -81,11 +83,13 @@ public class User {
 		 this.password = password;
 	 }
 
-	 public String getPhoneNumber() {
-		 return phoneNumber;
-	 }
 
-	 public void setPhoneNumber(String phoneNumber) {
+
+	 public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	 public void setPhoneNumber(int phoneNumber) {
 		 this.phoneNumber = phoneNumber;
 	 }
 
@@ -129,25 +133,48 @@ public class User {
 		 this.notifications = notifications;
 	 }
 
-	 public User(int userId, String firstName, String lastName, String email, String password, String phoneNumber,
-			String role, List<Job> jobApplied, List<Job> jobsPosted, Resume resume, List<Notification> notifications) {
+	 public User(int userId, String name, String email, String password, int phoneNumber, String role,
+			String companyName, List<Job> jobApplied, List<Job> jobsPosted, Resume resume,
+			List<Notification> notifications) {
 		super();
 		this.userId = userId;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.role = role;
+		CompanyName = companyName;
 		this.jobApplied = jobApplied;
 		this.jobsPosted = jobsPosted;
 		this.resume = resume;
 		this.notifications = notifications;
-	 }
+	}
+
 
 	 public User() {
 		super();
 	 }
+
+	 public User(String name, String email, String password, int phoneNumber) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.role = "User";
+	 }
+
+	 public User(String name, String email, String password, int phoneNumber, String companyName) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		CompanyName = companyName;
+		this.role = "Employer";
+	 }
+
+
 	 
 	 
 	 
