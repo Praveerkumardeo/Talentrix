@@ -1,4 +1,4 @@
-name: Maven Build 
+name: Maven Build (No Tests)
 
 on:
   push:
@@ -11,18 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Set up Java (change version if needed)
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 4️⃣ Clean and build (skip tests)
-      - name: Clean and Build
-        run: mvn -B clean package -DskipTests
+      # Debug step: confirm pom.xml is visible
+      - name: Show current directory and files
+        run: |
+          pwd
+          ls -la
 
+      # Build (skip tests)
+      - name: Clean and Build
+        run: mvn -B -f pom.xml clean package -DskipTests
