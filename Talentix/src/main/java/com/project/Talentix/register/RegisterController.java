@@ -1,5 +1,6 @@
 package com.project.Talentix.register;
 
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.Talentix.models.User;
@@ -14,4 +15,5 @@ public class RegisterController {
 		// Registration logic here
 		return "User registered successfully!";
 	}
+
 }
