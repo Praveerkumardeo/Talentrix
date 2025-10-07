@@ -20,12 +20,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Debug step: confirm pom.xml is visible
-      - name: Show current directory and files
+      - name: Show directory (debug)
         run: |
           pwd
           ls -la
 
-      # Build (skip tests)
       - name: Clean and Build
-        run: mvn -B -f pom.xml clean package -DskipTests
+        working-directory: Talentrix   # 👈 put your folder name here
+        run: mvn -B clean package -DskipTests
