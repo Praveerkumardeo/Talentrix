@@ -1,8 +1,8 @@
-package com.project.Talentix.login;
+package com.project.Talentix.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LoginController {
+public class ApplicationController {
 
 }

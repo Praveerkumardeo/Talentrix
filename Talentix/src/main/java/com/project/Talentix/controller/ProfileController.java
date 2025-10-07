@@ -1,8 +1,8 @@
-package com.project.Talentix.jobManagement;
+package com.project.Talentix.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class JobController {
+public class ProfileController {
 
 }

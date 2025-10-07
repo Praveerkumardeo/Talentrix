@@ -1,4 +1,4 @@
-package com.project.Talentix.notification;
+package com.project.Talentix.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

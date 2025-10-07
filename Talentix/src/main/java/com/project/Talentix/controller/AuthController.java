@@ -1,8 +1,8 @@
-package com.project.Talentix.profileManagement;
+package com.project.Talentix.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ProfileController {
+public class AuthController {
 
 }

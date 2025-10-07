@@ -1,8 +1,8 @@
-package com.project.Talentix.logout;
+package com.project.Talentix.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LogoutController {
+public class JobController {
 
 }
