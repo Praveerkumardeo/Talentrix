@@ -31,8 +31,7 @@ public class User {
     @ElementCollection
 	List<Job> jobsPosted; // for employer
 	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Resume resume;
+    String resume;
 	
 	 @ManyToMany(mappedBy = "users")
     @ElementCollection
@@ -117,11 +116,13 @@ public class User {
 		 this.jobsPosted = jobsPosted;
 	 }
 
-	 public Resume getResume() {
-		 return resume;
-	 }
 
-	 public void setResume(Resume resume) {
+
+	 public String getResume() {
+		return resume;
+	}
+
+	 public void setResume(String resume) {
 		 this.resume = resume;
 	 }
 
@@ -134,7 +135,7 @@ public class User {
 	 }
 
 	 public User(int userId, String name, String email, String password, int phoneNumber, String role,
-			String companyName, List<Job> jobApplied, List<Job> jobsPosted, Resume resume,
+			String companyName, List<Job> jobApplied, List<Job> jobsPosted, String resume,
 			List<Notification> notifications) {
 		super();
 		this.userId = userId;

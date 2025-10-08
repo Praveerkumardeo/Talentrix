@@ -42,5 +42,9 @@ public class HomeController {
 		return "Notification"; // returns the view name
 	}
 
+    @RequestMapping("/updateProfilePage")
+    public String showUpdateProfilePage() {
+        return "UpdateProfile"; // shows the JSP page
+    }
 
 }
