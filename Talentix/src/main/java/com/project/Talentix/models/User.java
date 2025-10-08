@@ -23,9 +23,9 @@ public class User {
 	
 	String CompanyName; // for employer
 	
-	@ManyToMany(mappedBy = "applicants")
-    @ElementCollection
-	List<Job> jobApplied; // for candidate
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<JobApplications> applications;
+
     
 	@OneToMany(mappedBy = "postedBy", cascade = CascadeType.ALL, orphanRemoval = true)
     @ElementCollection
@@ -100,12 +100,14 @@ public class User {
 		 this.role = role;
 	 }
 
-	 public List<Job> getJobApplied() {
-		 return jobApplied;
-	 }
 
-	 public void setJobApplied(List<Job> jobApplied) {
-		 this.jobApplied = jobApplied;
+
+	 public List<JobApplications> getApplications() {
+		return applications;
+	}
+
+	 public void setApplications(List<JobApplications> applications) {
+		 this.applications = applications;
 	 }
 
 	 public List<Job> getJobsPosted() {
@@ -135,7 +137,7 @@ public class User {
 	 }
 
 	 public User(int userId, String name, String email, String password, int phoneNumber, String role,
-			String companyName, List<Job> jobApplied, List<Job> jobsPosted, String resume,
+			String companyName, List<JobApplications> applications, List<Job> jobsPosted, String resume,
 			List<Notification> notifications) {
 		super();
 		this.userId = userId;
@@ -145,11 +147,12 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.role = role;
 		CompanyName = companyName;
-		this.jobApplied = jobApplied;
+		this.applications = applications;
 		this.jobsPosted = jobsPosted;
 		this.resume = resume;
 		this.notifications = notifications;
 	}
+
 
 
 	 public User() {

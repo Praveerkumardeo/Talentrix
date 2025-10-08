@@ -2,10 +2,14 @@ package com.project.Talentix.service;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import com.project.Talentix.models.Job;
+
 @Service
 public interface ApplicationService {
-	void applyToJob(Long jobId, Long userId);
-	void withdrawApplication(Long jobId, Long userId);
-	void viewApplications(Long userId);
-	String jobStatusUpdate(Long jobId, Long userId);
+	void applyToJob(int jobId, HttpSession session);
+	void withdrawApplication(int jobId, HttpSession session);
+	List<Job> viewApplications(HttpSession session);
+	String jobStatusUpdate(int jobId, HttpSession session);
 }

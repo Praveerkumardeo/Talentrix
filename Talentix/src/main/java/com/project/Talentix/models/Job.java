@@ -37,9 +37,10 @@ public class Job {
         joinColumns = @JoinColumn(name = "job_id"),
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-	List<User> applicants; // List of users who applied for the job
 	
-	String status; // Applied, Reviewed, Shortlisted, Rejected -> for candidate 
+
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<JobApplications> applications;
 	
 	
 	
@@ -141,25 +142,22 @@ public class Job {
 		this.categories = categories;
 	}
 
-	public List<User> getApplicants() {
-		return applicants;
+
+
+	public List<JobApplications> getApplications() {
+		return applications;
 	}
 
-	public void setApplicants(List<User> applicants) {
-		this.applicants = applicants;
+	public void setApplications(List<JobApplications> applications) {
+		this.applications = applications;
 	}
 
-	public String getStatus() {
-		return status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+
 
 	public Job(int jobId, String jobTitle, String jobDescription, String jobLocation, String jobType, User postedBy,
 			Date postedDate, Date applicationDeadline, int numberOfPositions, double salary,
-			List<String> requiredSkills, List<String> categories, List<User> applicants, String status) {
+			List<String> requiredSkills, List<String> categories, List<JobApplications> applications, String status) {
 		super();
 		this.jobId = jobId;
 		this.jobTitle = jobTitle;
@@ -173,8 +171,7 @@ public class Job {
 		this.salary = salary;
 		this.requiredSkills = requiredSkills;
 		this.categories = categories;
-		this.applicants = applicants;
-		this.status = status;
+		this.applications = applications;
 	}
 
 	public Job() {

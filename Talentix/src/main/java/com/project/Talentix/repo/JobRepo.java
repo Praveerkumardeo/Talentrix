@@ -1,5 +1,8 @@
 package com.project.Talentix.repo;
 
-public interface JobRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.project.Talentix.models.Job;
+
+public interface JobRepo extends JpaRepository<Job, Integer> {
 
 }
