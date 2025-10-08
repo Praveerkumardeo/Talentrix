@@ -30,14 +30,6 @@ public class Job {
 	List<String> requiredSkills;
 	@ElementCollection
 	List<String> categories;
-	
-    @ManyToMany
-    @JoinTable(
-        name = "job_applications",
-        joinColumns = @JoinColumn(name = "job_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-	
 
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JobApplications> applications;

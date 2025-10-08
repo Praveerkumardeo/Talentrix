@@ -6,19 +6,20 @@ import jakarta.persistence.*;
 @Table(name = "job_applications")
 public class JobApplications {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+	    @ManyToOne
+	    @JoinColumn(name = "user_id")
+	    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "job_id")
-    private Job job;
+	    @ManyToOne
+	    @JoinColumn(name = "job_id")
+	    private Job job;
 
-    private String status; // Applied, Reviewed, Shortlisted, Rejected
+	    private String status; // Applied, Reviewed, Shortlisted, Rejected
+
 
 	public int getId() {
 		return id;

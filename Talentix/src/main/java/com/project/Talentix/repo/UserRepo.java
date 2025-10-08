@@ -16,10 +16,4 @@ public interface UserRepo extends JpaRepository<User, Integer>{
 	@Query("SELECT u.email FROM User u WHERE u.id = :id")
     String findEmailById(@Param("id") int id);
 
-
-
-	 @Query("SELECT u.jobApplied FROM User u WHERE u.id = :userId")
-	    List<Job> findAppliedJobs(@Param("userId") int userId);
-
-
 }
