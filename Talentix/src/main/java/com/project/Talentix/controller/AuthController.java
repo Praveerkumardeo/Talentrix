@@ -13,24 +13,7 @@ public class AuthController {
 
 	@Autowired
 	private AuthService authService;
-//	
-//    // User Registration
-//    @PostMapping("registerUser")
-//    public String registerUser(@RequestBody UserRegstrationRequest request) {
-//        return authService.RegisterUser(request);
-//    }
-//
-//    // Employer Registration
-//    @PostMapping("/register/employer")
-//    public String registerEmployer(@RequestBody EmployerRegstrationRequest request) {
-//        return authService.RegisterEmployer(request);
-//    }
-//
-//    // Login
-//    @PostMapping("/login")
-//    public String login(@RequestBody LoginRequest request) {
-//        return authService.Login(request);
-//    }
+
 	
 	@PostMapping("/registerUser")
 	public String registerUser(@ModelAttribute UserRegstrationRequest req) {
@@ -41,6 +24,12 @@ public class AuthController {
 	@PostMapping("/registerEmployer")
 	public String registerEmployer(@ModelAttribute EmployerRegstrationRequest req) {
 		authService.RegisterEmployer(req);
+		return "Result"; // your result JSP page
+	}
+	
+	@PostMapping("/login")
+	public String login(@ModelAttribute LoginRequest req) {
+		authService.Login(req);
 		return "Result"; // your result JSP page
 	}
 }

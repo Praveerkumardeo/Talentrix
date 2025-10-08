@@ -10,14 +10,14 @@
 </head>
 <body>
   <main class="card" role="main">
-    <h1>Login</h1>
+    <h1>Send mail</h1>
     <p class="lead">Enter your details.</p>
 
-<form action="login" method="post">
-  <input type="email" name="email" placeholder="Email">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Login</button>
-  <button type="button" onclick="window.location.href='/'">For Login</button>
+<form action="notification" method="post">
+ <input type="text" name="userId" placeholder="User ID">
+  <input type="text" name="message" placeholder="message">
+  <button type="submit">Send</button>
+
 
 </form>
   </main>

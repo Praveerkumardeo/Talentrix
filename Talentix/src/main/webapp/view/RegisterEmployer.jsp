@@ -19,7 +19,10 @@
   <input type="password" name="password" placeholder="Password">
   <input type="text" name="phone" placeholder="Phone">
     <input type="text" name="CompanyName" placeholder="CompanyName">
-  <button type="submit">Register</button>
+    <button type="submit">Register</button>
+      <button type="button" onclick="window.location.href='/login'">For Login</button>
+
+  
 </form>
 
 

@@ -16,23 +16,31 @@ public class HomeController {
 
 	@Autowired
 	AuthService authService;
-
+	
 	@RequestMapping("/")
 	public String home() {
-		return "RegisterEmployer"; // returns the view name
+		return "Home"; // returns the view name
 	}
 
-//	@RequestMapping("/registerUser")
-//	public String Register(@RequestParam String name, @RequestParam String email, @RequestParam String password, @RequestParam int phone) {
-//		UserRegstrationRequest req = new UserRegstrationRequest();
-//		req.setName(name);
-//		req.setEmail(email);
-//		req.setPassword(password);
-//		req.setPhone(phone);
-//		
-//		authService.RegisterUser(req);
-//		 return "Result";
-//	}
+	@RequestMapping("/registerEmployer")
+	public String registerEmployer() {
+		return "RegisterEmployer"; // returns the view name
+	}
+	
+	@RequestMapping("/registerUser")
+	public String registerUser() {
+		return "Register"; // returns the view name
+	}
+
+	@RequestMapping("/login")
+	public String login() {
+		return "Login"; // returns the view name
+	}
+	
+	@RequestMapping("/sendNotification")
+	public String sendNotification() {
+		return "Notification"; // returns the view name
+	}
 
 
 }
