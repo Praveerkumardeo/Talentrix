@@ -2,13 +2,17 @@ package com.project.Talentix.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.Talentix.models.Token;
 import com.project.Talentix.request.UserRegstrationRequest;
 import com.project.Talentix.service.AuthService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -38,13 +42,31 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/sendNotification")
-	public String sendNotification() {
+	public String sendNotification(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+    	if(token == null) {
+    		return "Login"; // your login JSP page
+    	}
+    	if(token.getRole().equals("User")) {
+			return "UserHome"; // your user JSP page
+		}
 		return "Notification"; // returns the view name
 	}
 
     @RequestMapping("/updateProfilePage")
-    public String showUpdateProfilePage() {
+    public String showUpdateProfilePage(HttpSession session) {
+    	Token token = (Token) session.getAttribute("token");
+    	if(token == null) {
+    		return "Login"; // your login JSP page
+    	}
+    	
         return "UpdateProfile"; // shows the JSP page
     }
+    
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "Home"; // your login JSP page
+	}
 
 }

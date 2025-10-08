@@ -2,12 +2,13 @@ package com.project.Talentix.service;
 
 import com.project.Talentix.request.LoginRequest;
 import com.project.Talentix.request.UserRegstrationRequest;
+import com.project.Talentix.models.Token;
 import com.project.Talentix.request.EmployerRegstrationRequest;
 
 
 public interface AuthService {
-	String RegisterUser(UserRegstrationRequest request);
-	String RegisterEmployer(EmployerRegstrationRequest request);
-	String Login(LoginRequest request);
+	Token RegisterUser(UserRegstrationRequest request);
+	Token RegisterEmployer(EmployerRegstrationRequest request);
+	Token Login(LoginRequest request);
 	
 }

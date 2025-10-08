@@ -17,7 +17,7 @@
   <input type="email" name="email" placeholder="Email">
   <input type="password" name="password" placeholder="Password">
   <button type="submit">Login</button>
-  <button type="button" onclick="window.location.href='/'">For Login</button>
+  <button type="button" onclick="window.location.href='/'">For Register</button>
 
 </form>
   </main>

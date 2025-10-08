@@ -3,12 +3,14 @@ package com.project.Talentix.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.Talentix.models.Token;
 import com.project.Talentix.models.User;
 import com.project.Talentix.repo.UserRepo;
 import com.project.Talentix.request.LoginRequest;
 import com.project.Talentix.request.UserRegstrationRequest;
 import com.project.Talentix.request.EmployerRegstrationRequest;
 import com.project.Talentix.service.AuthService;
+
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -17,7 +19,7 @@ public class AuthServiceImpl implements AuthService {
 	private UserRepo userRepository;
 
 	@Override
-	public String RegisterUser(UserRegstrationRequest request) {
+	public Token RegisterUser(UserRegstrationRequest request) {
 		// TODO Auto-generated method stub
 		String email = request.getEmail();
 		String password = request.getPassword();
@@ -28,29 +30,28 @@ public class AuthServiceImpl implements AuthService {
 		
 		userRepository.save(user);
 		
-		return "User" + name + "Registered Successfully" + "with Role: User";
+		return new Token("User", user.getUserId());
 	}
 
 	@Override
-	public String Login(LoginRequest request) {
+	public Token Login(LoginRequest request) {
 		String email = request.getEmail();
 		String password = request.getPassword();
 		
 		User user = userRepository.findByEmail(email);
+
 		
-		if(user == null) {
-			return "User Not Found";
+		if(!user.getPassword().equals(password) || user == null) {
+			return null;
 		}
 		
-		if(!user.getPassword().equals(password)) {
-			return "Invalid Password";
-		}
-		
-		return "User" + user.getName() + "Logged In Successfully";
+		return new Token(user.getRole(), user.getUserId());
 	}
+	
+
 
 	@Override
-	public String RegisterEmployer(EmployerRegstrationRequest request) {
+	public Token RegisterEmployer(EmployerRegstrationRequest request) {
 		String email = request.getEmail();
 		String password = request.getPassword();
 		String name = request.getName();
@@ -61,7 +62,7 @@ public class AuthServiceImpl implements AuthService {
 		
 		userRepository.save(user);
 		
-		return "User" + name + "Registered Successfully" + "with Role: Employer";
+		return  new Token("Employer", user.getUserId());
 	}
 
 
