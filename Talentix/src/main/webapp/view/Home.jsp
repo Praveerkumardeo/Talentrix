@@ -7,7 +7,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JobPortal</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/main.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/view/css/main.css" />
 </head>
 <body>
 	<header class="navbar">
@@ -18,9 +19,9 @@
 		<nav>
 			<ul class="nav-links">
 				<li><a href="#" class="active">Home</a></li>
-				<li><a href="/jobs.html">Find Jobs</a></li>
-				<li><a href="/companies.html">Companies</a></li>
-				<li><a href="/about.html">About</a></li>
+				<li><a href="${pageContext.request.contextPath}/view/jobs.jsp">Find Jobs</a></li>
+				<li><a href="${pageContext.request.contextPath}/view/companies.jsp">Companies</a></li>
+				<li><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></li>
 			</ul>
 		</nav>
 		<div class="nav-buttons">
@@ -73,7 +74,7 @@
 			</div>
 
 			<!-- Login Form -->
-			<form id="signInForm" class="form active" action="login"
+			<form id="signInForm" class="form active" action="/login"
 				method="post">
 				<label>Email</label> <input type="email" name="email"
 					placeholder="you@example.com" required> <label>Password</label>
@@ -84,7 +85,7 @@
 			</form>
 
 			<!-- Register User Form -->
-			<form id="userSignUpForm" class="form" action="/registerUser"
+			<form id="userSignUpForm" class="form" action="/registerU"
 				method="post">
 				<label>Full Name</label> <input type="text" name="name"
 					placeholder="John Doe" required> <label>Email</label> <input
@@ -99,21 +100,29 @@
 			</form>
 
 			<!-- Register Employer Form -->
-			<form id="employerSignUpForm" class="form" action="/registerEmployer"
+			<form id="employerSignUpForm" class="form" action="/registerE"
 				method="post">
+				
+				<label>Employer Name</label> <input type="text" name="name"
+					placeholder="Your name" required> 
+				
 				<label>Company Name</label> <input type="text" name="companyName"
-					placeholder="TechCorp Pvt Ltd" required> <label>Email</label>
+					placeholder="TechCorp Pvt Ltd" required> 
+					
+				<label>Email</label>
 				<input type="email" name="email" placeholder="company@example.com"
-					required> <label>Phone</label> <input type="text"
-					name="phoneNumber" placeholder="xxxxxxxxxx" required> <label>Password</label>
-				<input type="password" name="password"
-					placeholder="Create a password" required>
+					required> 
+					
+					<label>Phone</label> 
+					<input type="text" name="phoneNumber" placeholder="xxxxxxxxxx" required> <label>Password</label>
+					
+				<input type="password" name="password" splaceholder="Create a password" required>
 
 				<button type="submit" class="submit-btn">Register Employer</button>
 			</form>
 		</div>
 	</div>
-s
+	s
 
 	<script src="${pageContext.request.contextPath}/view/js/main.js"></script>
 </body>

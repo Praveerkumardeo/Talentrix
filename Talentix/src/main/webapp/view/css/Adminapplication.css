@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #f9f9fb;
+  color: #333;
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  background: linear-gradient(90deg, #7b2ff7, #f107a3);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 12px;
+  display: block;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.sidebar ul li.active a,
+.sidebar ul li a:hover {
+  background: #00c26e;
+  color: white;
+}
+
+.back-btn,
+.signout-btn {
+  margin-top: auto;
+  padding: 10px;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.manage-link {
+  color: #4f46e5;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.filter select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f4f4f9;
+  font-weight: 600;
+}
+
+/* Status Badges */
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  color: white;
+  display: inline-block;
+}
+
+.status.reviewing { background: #5b8def; }
+.status.shortlisted { background: #22c55e; }
+.status.pending { background: #eab308; color: #333; }
+.status.accepted { background: #16a34a; }
+.status.rejected { background: #ef4444; }
+
+/* Actions */
+td.actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+td.actions i {
+  cursor: pointer;
+}
+
+td.actions .view {
+  color: #4f46e5;
+  cursor: pointer;
+}

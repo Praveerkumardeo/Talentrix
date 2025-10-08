@@ -1,0 +1,80 @@
+/* Reset some basics */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f9fbff;
+}
+
+header.hero {
+  background: linear-gradient(180deg, #a445f2, #d048c7);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+header.hero .highlight {
+  background-color: white;
+  color: #a445f2;
+  padding: 0 8px;
+  border-radius: 4px;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 1.1em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mission-section, .values-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.text-content {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.tag {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  margin-bottom: 10px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stat {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  width: 150px;
+  font-size: 1.2em;
+  color: #6a11cb;
+  font-weight: bold;
+}
+
+.stat span {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.core-values {
+  font-size: 1em;
+  max-width: 600px;
+  margin: 10px auto;
+}

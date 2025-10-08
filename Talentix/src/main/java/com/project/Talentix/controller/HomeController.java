@@ -21,25 +21,19 @@ public class HomeController {
 	@Autowired
 	AuthService authService;
 	
+	// user first lands to home page
+	// there will be options to register (user/employer) or login
+	
+	// after login, user will be redirected to their respective pages based on their roles
+	// user -> About
+	// employer -> Employer
+	
+	
 	@RequestMapping("/")
 	public String home() {
 		return "Home"; // returns the view name
 	}
-
-	@RequestMapping("/registerEmployer")
-	public String registerEmployer() {
-		return "RegisterEmployer"; // returns the view name
-	}
 	
-	@RequestMapping("/registerUser")
-	public String registerUser() {
-		return "Register"; // returns the view name
-	}
-
-	@RequestMapping("/login")
-	public String login() {
-		return "Login"; // returns the view name
-	}
 	
 	@RequestMapping("/sendNotification")
 	public String sendNotification(HttpSession session) {
@@ -63,10 +57,6 @@ public class HomeController {
         return "UpdateProfile"; // shows the JSP page
     }
     
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "Home"; // your login JSP page
-	}
+
 
 }
