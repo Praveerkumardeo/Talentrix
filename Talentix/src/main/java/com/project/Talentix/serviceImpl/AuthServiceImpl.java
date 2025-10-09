@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
 		
 		userRepository.save(user);
 		
-		return new Token("User", user.getUserId());
+		return new Token("User", user.getId());
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
 			return null;
 		}
 		
-		return new Token(user.getRole(), user.getUserId());
+		return new Token(user.getRole(), user.getId());
 	}
 	
 
@@ -62,7 +62,7 @@ public class AuthServiceImpl implements AuthService {
 		
 		userRepository.save(user);
 		
-		return  new Token("Employer", user.getUserId());
+		return  new Token("Employer", user.getId());
 	}
 
 

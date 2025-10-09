@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Notification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int notiId;
+	int id;
 	String message;
 	
 	 @ManyToMany
@@ -23,16 +23,18 @@ public class Notification {
 	 
 	 // Getters & Setters
 	 
-	 public int getNotiId() {
-		 return notiId;
-	 }
 
-	 public void setNotiId(int notiId) {
-		 this.notiId = notiId;
-	 }
 
 	 public String getMessage() {
 		 return message;
+	 }
+
+	 public int getId() {
+		return id;
+	}
+
+	 public void setId(int id) {
+		 this.id = id;
 	 }
 
 	 public void setMessage(String message) {
@@ -47,9 +49,8 @@ public class Notification {
 		 this.users = users;
 	 }
 
-	 public Notification(int notiId, String message, List<User> users) {
+	 public Notification(String message, List<User> users) {
 		super();
-		this.notiId = notiId;
 		this.message = message;
 		this.users = users;
 	 }

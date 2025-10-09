@@ -8,7 +8,7 @@ public class Resume {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int resumeId;
+    private int id;
 
     @Column(nullable = false)
     private String filePath;
@@ -19,8 +19,8 @@ public class Resume {
     private User user;
 
     // Getters & Setters
-    public int getResumeId() { return resumeId; }
-    public void setResumeId(int resumeId) { this.resumeId = resumeId; }
+    public int getResumeId() { return id; }
+    public void setResumeId(int resumeId) { this.id = resumeId; }
 
     public String getFilePath() { return filePath; }
     public void setFilePath(String filePath) { this.filePath = filePath; }
@@ -29,9 +29,8 @@ public class Resume {
     public void setUser(User user) { this.user = user; }
     
     
-	public Resume(int resumeId, String filePath, User user) {
+	public Resume(String filePath, User user) {
 		super();
-		this.resumeId = resumeId;
 		this.filePath = filePath;
 		this.user = user;
 	}

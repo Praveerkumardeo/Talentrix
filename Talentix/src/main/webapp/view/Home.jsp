@@ -85,7 +85,7 @@
 			</form>
 
 			<!-- Register User Form -->
-			<form id="userSignUpForm" class="form" action="/registerU"
+			<form id="userSignUpForm" class="form" action="/registerUser"
 				method="post">
 				<label>Full Name</label> <input type="text" name="name"
 					placeholder="John Doe" required> <label>Email</label> <input
@@ -100,7 +100,7 @@
 			</form>
 
 			<!-- Register Employer Form -->
-			<form id="employerSignUpForm" class="form" action="/registerE"
+			<form id="employerSignUpForm" class="form" action="/registerEmployer"
 				method="post">
 				
 				<label>Employer Name</label> <input type="text" name="name"

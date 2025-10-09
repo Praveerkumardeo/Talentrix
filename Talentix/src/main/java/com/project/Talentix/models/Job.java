@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 public class Job {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int jobId;
+	int id;
 	
 	String jobTitle;
 	String jobDescription;
@@ -38,16 +38,17 @@ public class Job {
 	
 	// Getters & Setters
 
-	public int getJobId() {
-		return jobId;
-	}
-
-	public void setJobId(int jobId) {
-		this.jobId = jobId;
-	}
 
 	public String getJobTitle() {
 		return jobTitle;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setJobTitle(String jobTitle) {
@@ -147,11 +148,10 @@ public class Job {
 
 
 
-	public Job(int jobId, String jobTitle, String jobDescription, String jobLocation, String jobType, User postedBy,
+	public Job(String jobTitle, String jobDescription, String jobLocation, String jobType, User postedBy,
 			Date postedDate, Date applicationDeadline, int numberOfPositions, double salary,
 			List<String> requiredSkills, List<String> categories, List<JobApplications> applications, String status) {
 		super();
-		this.jobId = jobId;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
 		this.jobLocation = jobLocation;

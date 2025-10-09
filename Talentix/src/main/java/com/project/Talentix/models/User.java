@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int userId;
+	int id;
 	
 	
 	String name;
@@ -40,19 +40,20 @@ public class User {
 	 
 	 // Getters & Setters
 	 
-	 public int getUserId() {
-		 return userId;
-	 }
-
-	 public void setUserId(int userId) {
-		 this.userId = userId;
-	 }
 
 
 
 	 public String getName() {
 		return name;
 	}
+
+	 public int getId() {
+		return id;
+	}
+
+	 public void setId(int id) {
+		 this.id = id;
+	 }
 
 	 public void setName(String name) {
 		 this.name = name;
@@ -136,11 +137,10 @@ public class User {
 		 this.notifications = notifications;
 	 }
 
-	 public User(int userId, String name, String email, String password, int phoneNumber, String role,
+	 public User(String name, String email, String password, int phoneNumber, String role,
 			String companyName, List<JobApplications> applications, List<Job> jobsPosted, String resume,
 			List<Notification> notifications) {
 		super();
-		this.userId = userId;
 		this.name = name;
 		this.email = email;
 		this.password = password;
