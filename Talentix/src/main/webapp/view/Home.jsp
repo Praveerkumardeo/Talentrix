@@ -15,15 +15,15 @@
 		<div class="logo">
 			<img src="https://cdn-icons-png.flaticon.com/512/709/709579.png"
 				alt="logo" class="logo-icon"> <span>JobPortal</span>
-		</div>
+		</div><!-- 
 		<nav>
 			<ul class="nav-links">
 				<li><a href="#" class="active">Home</a></li>
 				<li><a href="${pageContext.request.contextPath}/view/jobs.jsp">Find Jobs</a></li>
 				<li><a href="${pageContext.request.contextPath}/view/companies.jsp">Companies</a></li>
-				<li><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></li>
+				<li><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></li> 
 			</ul>
-		</nav>
+		</nav>-->
 		<div class="nav-buttons">
 			<button class="sign-in" id="openSignIn">Login</button>
 			<button class="post-job" id="openSignUp">Sign Up</button>
@@ -38,20 +38,7 @@
 
 
 
-		<div class="search-bar">
-			<input type="text" id="searchInput"
-				placeholder="Job title, keywords, or company">
-			<button id="searchBtn">Search Jobs</button>
-		</div>
-
-
-		<div class="popular">
-			<span>Popular searches:</span>
-			<button class="pill">Frontend</button>
-			<button class="pill">Design</button>
-			<button class="pill">Marketing</button>
-			<button class="pill">Data Science</button>
-		</div>
+	
 	</section>
 
 

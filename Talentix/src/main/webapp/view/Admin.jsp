@@ -28,7 +28,7 @@
     <header>
       <h1>Job Management</h1>
       <p><a href="#" class="manage-link">Manage all job postings</a></p>
-      <button id="addJobBtn">+ Add Job</button>
+      <button id="addJobBtn" onclick="window.location.href='${pageContext.request.contextPath}/createJob'">+ Add Job</button>
     </header>
 
     <table>

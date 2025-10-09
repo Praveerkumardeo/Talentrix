@@ -26,7 +26,7 @@ public class AuthController {
 			mv.setViewName("Home");
 		} else {
 			session.setAttribute("token", token);
-			mv.setViewName("About");
+			mv.setViewName("userlanding");
 		}
 
 		return mv;
@@ -59,7 +59,7 @@ public class AuthController {
 		} else if (token.getRole().equals("Employer")) {
 			mv.setViewName("Employer"); 
 		} else {
-			mv.setViewName("About"); // your user JSP page
+			mv.setViewName("userlanding"); // your user JSP page
 		}
 		
 		return mv;

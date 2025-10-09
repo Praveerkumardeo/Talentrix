@@ -54,3 +54,81 @@ document.getElementById("searchInput").addEventListener("keypress", (e) => {
     alert(`Searching for: ${e.target.value}`);
   }
 });
+
+
+
+
+
+
+// adding job card dinamically 
+const jobsList = document.getElementById("jobsList");
+const apiUrl = "http://localhost:8080/api/jobs/getAll"; // ✅ adjust port if needed
+
+async function loadJobs() {
+  try {
+    const response = await fetch(apiUrl);
+    const jobs = await response.json();
+    renderJobs(jobs);
+  } catch (error) {
+    console.error("❌ Error loading jobs:", error);
+  }
+}
+
+function renderJobs(jobs) {
+  jobsList.innerHTML = ""; // clear old data
+
+  if (!jobs || jobs.length === 0) {
+    jobsList.innerHTML = "<p>No jobs found.</p>";
+    return;
+  }
+
+  jobs.forEach(job => {
+    const jobCard = document.createElement("div");
+    jobCard.classList.add("job-card");
+
+    // Use correct backend field names 👇
+    const title = job.jobTitle || "Untitled";
+    const description = job.jobDescription || "No description available.";
+    const location = job.jobLocation || "Location not specified";
+    const type = job.jobType || "N/A";
+    const salary = job.salary ? `$${job.salary}` : "Not disclosed";
+    const category = (job.categories && job.categories.length > 0) ? job.categories[0] : "General";
+
+    jobCard.setAttribute("data-type", type);
+    jobCard.setAttribute("data-category", category);
+
+    jobCard.innerHTML = `
+      <div class="job-header">
+        <img src="https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 80)}.jpg" 
+             alt="Company Logo" class="company-logo">
+        <div class="job-info">
+          <h2>${title}</h2>
+          <p class="company">${job.postedBy ? job.postedBy.name || "Unknown Employer" : "Anonymous"}</p>
+          <p class="details">
+            <span>📍 ${location}</span> •
+            <span>💼 ${type}</span> •
+            <span>💰 ${salary}</span> •
+            <span>🕓 ${formatDate(job.postedDate)}</span>
+          </p>
+        </div>
+        <span class="featured">⭐ Featured</span>
+      </div>
+      <p class="description">${description}</p>
+      <div class="tags"><span>${category}</span></div>
+      <a href="/view/jobdetails.jsp?id=${job.id}" class="view-btn">View Details</a>
+    `;
+
+    jobsList.appendChild(jobCard);
+  });
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return "Unknown date";
+  const date = new Date(dateStr);
+  const diff = Math.floor((new Date() - date) / (1000 * 60 * 60 * 24));
+  if (isNaN(diff)) return "Unknown date";
+  return diff === 0 ? "Today" : diff === 1 ? "1 day ago" : `${diff} days ago`;
+}
+
+// Load jobs on page load
+document.addEventListener("DOMContentLoaded", loadJobs);

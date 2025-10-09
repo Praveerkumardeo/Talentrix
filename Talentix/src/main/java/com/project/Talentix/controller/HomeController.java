@@ -57,6 +57,39 @@ public class HomeController {
         return "UpdateProfile"; // shows the JSP page
     }
     
+    
+    @RequestMapping("/jobs")
+    public String showJobsPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if(token == null) {
+			return "Login"; // your login JSP page
+		}
+		
+		return "Jobs"; // shows the JSP page
+	}
+    
+    @RequestMapping("/about")
+    public String showAboutPage() {
+    	return "About"; // shows the JSP page
+    }
+    
+    @RequestMapping("/companies")
+    public String showCompaniesPage() {
+		return "Companies"; // shows the JSP page
+	}
+    
+    @RequestMapping("/createJob")
+    public String showCreateJobPage(HttpSession session) {
+    			Token token = (Token) session.getAttribute("token");
+    			if(token == null) {
+					return "Home"; // your login JSP page
+				}
+    			if(token.getRole().equals("ADMIN") || token.getRole().equals("Employer")) {
+					return "AddJob"; // your user JSP page
+				}
+				
+				return "Home"; // shows the JSP page
+    }
 
 
 }

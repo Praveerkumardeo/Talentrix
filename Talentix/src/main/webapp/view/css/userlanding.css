@@ -1,0 +1,217 @@
+/* ====== GLOBAL RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* ====== NAVBAR ====== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 60px;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.logo-icon {
+  width: 35px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #c084fc;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username-btn {
+  background: white;
+  color: #9333ea;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.user-icon {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+/* ====== HERO SECTION ====== */
+.hero {
+  margin-top: 80px;
+  padding: 40px;
+}
+
+.tagline {
+  background: rgba(255, 255, 255, 0.15);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+/* ====== SEARCH BAR (Updated to match main.css style) ====== */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.search-bar input {
+  width: 600px;              /* Increased width */
+  padding: 18px 24px;        /* Increased padding for height */
+  border-radius: 30px 0 0 30px;
+  border: none;
+  outline: none;
+  font-size: 1.05rem;
+  color: #333;
+  background-color: #fff;    /* Ensures it’s white */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+}
+
+
+.search-bar button {
+  padding: 14px 25px;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  background: white;
+  color: #9333ea;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-bar button:hover {
+  background: #f3e8ff;
+}
+
+/* ====== POPULAR SEARCHES ====== */
+.popular {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 10px 5px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pill:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ====== DROPDOWN MENU ====== */
+.dropdown-menu {
+  position: absolute;
+  top: 70px;
+  right: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  display: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  z-index: 100;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.dropdown-menu ul li {
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+
+.dropdown-menu ul li:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dropdown-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    width: 250px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}

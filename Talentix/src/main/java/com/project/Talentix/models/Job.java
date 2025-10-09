@@ -3,6 +3,8 @@ package com.project.Talentix.models;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,16 +17,22 @@ public class Job {
 	String jobTitle;
 	String jobDescription;
 	String jobLocation;
+	String CompanyName;
 	String jobType; // Full-time, Part-time, Contract
 	
     @ManyToOne
     @JoinColumn(name = "posted_by_id")
     User postedBy;
 	
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date postedDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date applicationDeadline;
+    
 	int numberOfPositions;
-	double salary;
+	
+	Double salary;
+	
 	
 	@ElementCollection
 	List<String> requiredSkills;
@@ -111,11 +119,11 @@ public class Job {
 		this.numberOfPositions = numberOfPositions;
 	}
 
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 
@@ -148,13 +156,19 @@ public class Job {
 
 
 
-	public Job(String jobTitle, String jobDescription, String jobLocation, String jobType, User postedBy,
-			Date postedDate, Date applicationDeadline, int numberOfPositions, double salary,
-			List<String> requiredSkills, List<String> categories, List<JobApplications> applications, String status) {
+
+	
+	
+
+	public Job(String jobTitle, String jobDescription, String jobLocation, String companyName, String jobType,
+			User postedBy, Date postedDate, Date applicationDeadline, int numberOfPositions, double salary,
+			List<String> requiredSkills, List<String> categories, List<JobApplications> applications) {
 		super();
+
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
 		this.jobLocation = jobLocation;
+		CompanyName = companyName;
 		this.jobType = jobType;
 		this.postedBy = postedBy;
 		this.postedDate = postedDate;
@@ -166,9 +180,18 @@ public class Job {
 		this.applications = applications;
 	}
 
+	public String getCompanyName() {
+		return CompanyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		CompanyName = companyName;
+	}
+
 	public Job() {
 		super();
 	}
+
 	
 	
 	

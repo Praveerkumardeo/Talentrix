@@ -34,5 +34,8 @@ public interface JobApplicationRepo extends JpaRepository<JobApplications, Integ
     // Find status of a specific job for a user
     @Query("SELECT ja.status FROM JobApplications ja WHERE ja.user.id = :userId AND ja.job.id = :jobId")
     String findJobStatus(@Param("userId") int userId, @Param("jobId") int jobId);
+    
+    
+    
 }
 
