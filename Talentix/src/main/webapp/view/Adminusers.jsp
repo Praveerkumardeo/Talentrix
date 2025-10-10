@@ -21,7 +21,7 @@
 			Back to Portal</button>
 
 		<button class="signout-btn"
-			onclick="window.location.href='${pageContext.request.contextPath}/logout'">
+			onclick="window.location.href='${pageContext.request.contextPath}/api/auth/logout'">
 			Sign Out</button>
 
 	</div>

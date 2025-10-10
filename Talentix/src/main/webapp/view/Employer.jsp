@@ -26,7 +26,7 @@
         <button class="signout-btn" onclick="window.location.href='${pageContext.request.contextPath}/updateProfilePage'">
         Edit Profile</button>
 
-      <button class="signout-btn" onclick="window.location.href='${pageContext.request.contextPath}/logout'">
+      <button class="signout-btn" onclick="window.location.href='${pageContext.request.contextPath}/api/auth/logout'">
         Sign Out</button>
         
         
