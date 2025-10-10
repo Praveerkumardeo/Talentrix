@@ -25,7 +25,6 @@ public class JobController {
 	// ✅ Create a new Job
 	@PostMapping("/create")
 	public ModelAndView createJob(@ModelAttribute AddJobRequest job, HttpSession session) {
-		System.out.println("sdfghjklkjhgfdsdfghjklkjhgfdsdfghjkkjhgfdsdfghjkkjhgfdsdfghjkjhgfd");
 		
 		 if(job.getSkill() != null && !job.getSkill().isEmpty()) {
 		        job.setSkill(Arrays.asList(job.getSkill().get(0).split(",")));
@@ -36,8 +35,9 @@ public class JobController {
 		    
 		    System.out.println("inside ");
 		
-		jobService.createJob(job, session);
 		ModelAndView mv = new ModelAndView("Employer");
+		
+		jobService.createJob(job, session);
 		
 		return mv;
 	}
@@ -46,6 +46,11 @@ public class JobController {
 	@GetMapping("/getAll")
 	public List<Job> getAllJobs() {
 		List<Job> jobs = jobService.getAllJobs();
+		
+		for(Job j : jobs) {
+			System.out.println(j.toString());
+		}
+		
 		return jobs;
 	}
 
@@ -64,7 +69,7 @@ public class JobController {
 	}
 
 	// ✅ Delete Job
-	@DeleteMapping("/{id}")
+	@GetMapping("delete/{id}")
 	public ResponseEntity<Void> deleteJob(@PathVariable Integer id) {
 		jobService.deleteJob(id);
 		return ResponseEntity.noContent().build();
@@ -84,4 +89,19 @@ public class JobController {
 
 		return job;
 	}
+	
+//	@PostMapping("/deleteJob/{id}")
+//	public ModelAndView deleteJobViaForm(@RequestParam Integer id, HttpSession session) {
+//		jobService.deleteJob(id);
+//		ModelAndView mv = new ModelAndView("Employer");
+//		return mv;
+//	}
+	
+	@GetMapping("/deleteJob")
+	public ModelAndView deleteJobViaGet(@RequestParam Integer id, HttpSession session) {
+	    jobService.deleteJob(id);
+	    return new ModelAndView("Employer");
+	}
+
+	
 }

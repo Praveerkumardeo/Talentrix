@@ -33,3 +33,18 @@ document.getElementById("cancelBtn").addEventListener("click", function () {
     window.location.href = "employer.html";
   }
 });
+
+
+function validatePassword() {
+    const newPass = document.getElementById("newPass").value.trim();
+    const confirmPass = document.getElementById("confirmPass").value.trim();
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (newPass !== confirmPass) {
+      errorMsg.style.display = "block";
+      return false; // Prevent form submission
+    }
+
+    errorMsg.style.display = "none";
+    return true; // Allow submission
+  }

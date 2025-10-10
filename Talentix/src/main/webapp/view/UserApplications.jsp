@@ -11,8 +11,8 @@
     <h2 class="logo">Admin Dashboard</h2>
     <ul>
       <!-- <li><a href="#">Analytics</a></li> -->
-      <li><a href="${pageContext.request.contextPath}/view/Adminusers.jsp">Users</a></li>
-      <li class="active"><a href="${pageContext.request.contextPath}/view/Admin.jsp">Jobs</a></li>
+      <li><a href="${pageContext.request.contextPath}//adminUser">Users</a></li>
+      <li class="active"><a href="${pageContext.request.contextPath}/AdminJobs">Jobs</a></li>
       <li><a href="${pageContext.request.contextPath}/view/Adminapplication.jsp">Applications</a></li>
     </ul>
     <button class="back-btn"

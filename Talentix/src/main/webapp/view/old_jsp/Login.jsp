@@ -13,7 +13,7 @@
     <h1>Login</h1>
     <p class="lead">Enter your details.</p>
 
-<form action="login" method="post">
+<form action="/api/auth/login" method="post">
   <input type="email" name="email" placeholder="Email">
   <input type="password" name="password" placeholder="Password">
   <button type="submit">Login</button>

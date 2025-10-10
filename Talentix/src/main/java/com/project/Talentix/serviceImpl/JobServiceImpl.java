@@ -37,7 +37,7 @@ public class JobServiceImpl implements JobService {
     public void createJob(AddJobRequest req, HttpSession session) {
     		Token token = (Token) session.getAttribute("token");
     		int id = token.getId();
-    		Optional<User> user = userRepo.findById(id);
+    		User user = userRepo.findById(id);
     		
     		
     		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -54,9 +54,9 @@ public class JobServiceImpl implements JobService {
     					newJob.setNumberOfPositions(req.getNumberOfPositions());
     					newJob.setJobType(req.getType());
     					newJob.setCategories(req.getCategories());
-    					newJob.setPostedBy(user.get());
+    					newJob.setPostedBy(user);
     					newJob.setPostedDate(new java.util.Date());
-    					newJob.setCompanyName(user.get().getCompanyName());
+    					newJob.setCompanyName(user.getCompanyName());
     					
     												
     					

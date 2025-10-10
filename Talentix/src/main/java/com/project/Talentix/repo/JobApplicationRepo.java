@@ -15,26 +15,24 @@ import jakarta.transaction.Transactional;
 
 public interface JobApplicationRepo extends JpaRepository<JobApplications, Integer> {
 
-    // Add new application
-    @Modifying
-    @Transactional
-    @Query("INSERT INTO JobApplications (user, job, status) VALUES (:user, :job, 'Applied')")
-    void addApplication(@Param("user") User user, @Param("job") Job job);
+	 @Modifying
+	    @Transactional
+	    @Query("INSERT INTO JobApplications (userId, jobId, status) VALUES (:userId, :jobId, 'Applied')")
+	    void addApplication(@Param("userId") int userId, @Param("jobId") int jobId);
 
-    // Remove application
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM JobApplications ja WHERE ja.user.id = :userId AND ja.job.id = :jobId")
-    void removeApplication(@Param("userId") int userId, @Param("jobId") int jobId);
+	    // 🔹 Remove application
+	    @Modifying
+	    @Transactional
+	    @Query("DELETE FROM JobApplications ja WHERE ja.userId = :userId AND ja.jobId = :jobId")
+	    void removeApplication(@Param("userId") int userId, @Param("jobId") int jobId);
 
-    // Find all jobs applied by a user
-    @Query("SELECT ja.job FROM JobApplications ja WHERE ja.user.id = :userId")
-    List<Job> findAppliedJobs(@Param("userId") int userId);
+	    // 🔹 Find all jobs applied by a user
+	    @Query("SELECT j FROM Job j WHERE j.id IN (SELECT ja.jobId FROM JobApplications ja WHERE ja.userId = :userId)")
+	    List<Job> findAppliedJobs(@Param("userId") int userId);
 
-    // Find status of a specific job for a user
-    @Query("SELECT ja.status FROM JobApplications ja WHERE ja.user.id = :userId AND ja.job.id = :jobId")
-    String findJobStatus(@Param("userId") int userId, @Param("jobId") int jobId);
-    
+	    // 🔹 Find job status for a user and job
+	    @Query("SELECT ja.status FROM JobApplications ja WHERE ja.userId = :userId AND ja.jobId = :jobId")
+	    String findJobStatus(@Param("userId") int userId, @Param("jobId") int jobId);
     
     
 }

@@ -13,7 +13,7 @@
     <h1>Create an account</h1>
     <p class="lead">Enter your details to register.</p>
 
-<form action="/registerEmployer" method="post">
+<form action="/api/auth/registerEmployer" method="post">
   <input type="text" name="name" placeholder="Name">
   <input type="email" name="email" placeholder="Email">
   <input type="password" name="password" placeholder="Password">

@@ -9,6 +9,7 @@ import com.project.Talentix.request.SendNotificationRequest;
 import com.project.Talentix.service.NotificationService;
 
 @RestController
+@RequestMapping("/api/notifications")
 public class NotificationController {
 	
 	@Autowired

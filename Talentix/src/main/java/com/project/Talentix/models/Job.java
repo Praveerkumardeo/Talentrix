@@ -5,10 +5,14 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "jobs")
+@JsonIgnoreProperties({"applications", "hibernateLazyInitializer", "handler"})
 public class Job {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +26,12 @@ public class Job {
 	
     @ManyToOne
     @JoinColumn(name = "posted_by_id")
+    @JsonBackReference
     User postedBy;
 	
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	Date postedDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	Date applicationDeadline;
     
 	int numberOfPositions;
@@ -39,10 +44,6 @@ public class Job {
 	@ElementCollection
 	List<String> categories;
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<JobApplications> applications;
-	
-	
 	
 	// Getters & Setters
 
@@ -87,13 +88,14 @@ public class Job {
 		this.jobType = jobType;
 	}
 
+	public void setPostedBy(User postedBy) {
+		this.postedBy = postedBy;
+	}
+
 	public User getPostedBy() {
 		return postedBy;
 	}
 
-	public void setPostedBy(User postedBy) {
-		this.postedBy = postedBy;
-	}
 
 	public Date getPostedDate() {
 		return postedDate;
@@ -145,24 +147,12 @@ public class Job {
 
 
 
-	public List<JobApplications> getApplications() {
-		return applications;
-	}
-
-	public void setApplications(List<JobApplications> applications) {
-		this.applications = applications;
-	}
-
-
-
-
-
 	
 	
 
 	public Job(String jobTitle, String jobDescription, String jobLocation, String companyName, String jobType,
 			User postedBy, Date postedDate, Date applicationDeadline, int numberOfPositions, double salary,
-			List<String> requiredSkills, List<String> categories, List<JobApplications> applications) {
+			List<String> requiredSkills, List<String> categories) {
 		super();
 
 		this.jobTitle = jobTitle;
@@ -177,7 +167,6 @@ public class Job {
 		this.salary = salary;
 		this.requiredSkills = requiredSkills;
 		this.categories = categories;
-		this.applications = applications;
 	}
 
 	public String getCompanyName() {
@@ -190,6 +179,15 @@ public class Job {
 
 	public Job() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Job [id=" + id + ", jobTitle=" + jobTitle + ", jobDescription=" + jobDescription + ", jobLocation="
+				+ jobLocation + ", CompanyName=" + CompanyName + ", jobType=" + jobType + ", postedBy=" + postedBy
+				+ ", postedDate=" + postedDate + ", applicationDeadline=" + applicationDeadline + ", numberOfPositions="
+				+ numberOfPositions + ", salary=" + salary + ", requiredSkills=" + requiredSkills + ", categories="
+				+ categories + "]";
 	}
 
 	

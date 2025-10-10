@@ -27,7 +27,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendNotification(int userId, String message) {
-        User user = userRepo.findById(userId).orElse(null);
+        User user = userRepo.findById(userId);
 
         if (user == null) {
             System.out.println("User not found for ID: " + userId);

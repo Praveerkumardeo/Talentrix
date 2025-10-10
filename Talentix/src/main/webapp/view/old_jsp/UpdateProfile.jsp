@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Update Profile</h2>
-<form action="/updateProfile" method="post">
+<form action="/api/profile/updateProfile" method="post">
     <label>Name:</label>
     <input type="text" name="name" placeholder="Enter your name">
 

@@ -2,7 +2,11 @@ package com.project.Talentix.service;
 
 import com.project.Talentix.request.LoginRequest;
 import com.project.Talentix.request.UserRegstrationRequest;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.project.Talentix.models.Token;
+import com.project.Talentix.request.ChangePassRequest;
 import com.project.Talentix.request.EmployerRegstrationRequest;
 
 
@@ -10,5 +14,6 @@ public interface AuthService {
 	Token RegisterUser(UserRegstrationRequest request);
 	Token RegisterEmployer(EmployerRegstrationRequest request);
 	Token Login(LoginRequest request);
+	boolean changePassword(ChangePassRequest request, HttpSession session);
 	
 }

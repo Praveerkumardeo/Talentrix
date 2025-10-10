@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.project.Talentix.models.Job;
 import com.project.Talentix.service.ApplicationService;
@@ -19,10 +20,11 @@ public class ApplicationController {
     private ApplicationService applicationService;
 
     // ✅ Apply to a job
-    @PostMapping("/apply/{jobId}")
-    public ResponseEntity<String> applyToJob(@PathVariable int jobId, HttpSession session) {
+    @GetMapping("/apply/{jobId}")
+    public ModelAndView applyToJob(@PathVariable int jobId, HttpSession session) {
         applicationService.applyToJob(jobId, session);
-        return ResponseEntity.ok("Application submitted successfully");
+        ModelAndView mv = new ModelAndView("ApplyJob");
+        return mv;
     }
 
     // ✅ Withdraw job application
@@ -33,13 +35,13 @@ public class ApplicationController {
     }
 
     // ✅ View all jobs user has applied to
-    @GetMapping("/my-applications")
-    public ResponseEntity<List<Job>> viewApplications(HttpSession session) {
+    @GetMapping("/myApplications")
+    public List<Job> viewApplications(HttpSession session) {
         List<Job> jobs = applicationService.viewApplications(session);
         if (jobs == null || jobs.isEmpty()) {
-            return ResponseEntity.noContent().build();
+            return null;
         }
-        return ResponseEntity.ok(jobs);
+        return jobs;
     }
 
     // ✅ Check job application status

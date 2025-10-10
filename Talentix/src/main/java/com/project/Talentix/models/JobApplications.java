@@ -6,20 +6,14 @@ import jakarta.persistence.*;
 @Table(name = "job_applications")
 public class JobApplications {
 
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-	    @ManyToOne
-	    @JoinColumn(name = "user_id")
-	    private User user;
+	private int userId;
+	private int jobId;
 
-	    @ManyToOne
-	    @JoinColumn(name = "job_id")
-	    private Job job;
-
-	    private String status; // Applied, Reviewed, Shortlisted, Rejected
-
+	private String status; // Applied, Reviewed, Shortlisted, Rejected
 
 	public int getId() {
 		return id;
@@ -29,20 +23,20 @@ public class JobApplications {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public Job getJob() {
-		return job;
+	public int getJobId() {
+		return jobId;
 	}
 
-	public void setJob(Job job) {
-		this.job = job;
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
 	}
 
 	public String getStatus() {
@@ -53,13 +47,13 @@ public class JobApplications {
 		this.status = status;
 	}
 
-	public JobApplications(User user, Job job, String status) {
+	public JobApplications(int userId, int jobId, String status) {
 		super();
-		this.user = user;
-		this.job = job;
+		this.userId = userId;
+		this.jobId = jobId;
 		this.status = status;
 	}
 
-    
-}
+	
 
+}

@@ -7,12 +7,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.Talentix.request.LoginRequest;
 import com.project.Talentix.request.UserRegstrationRequest;
 import com.project.Talentix.models.Token;
+import com.project.Talentix.request.ChangePassRequest;
 import com.project.Talentix.request.EmployerRegstrationRequest;
 import com.project.Talentix.service.AuthService;
 
 import jakarta.servlet.http.HttpSession;
 
 @RestController
+@RequestMapping("/api/auth")
 public class AuthController {
 
 	@Autowired
@@ -69,6 +71,24 @@ public class AuthController {
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		return new ModelAndView("Home");
+	}
+	
+
+	@PostMapping("/changePassword")
+	public ModelAndView changePassword(@ModelAttribute ChangePassRequest request, HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		ModelAndView mv = new ModelAndView();
+		if (token == null) {
+			mv.setViewName("Home"); // your login JSP page
+			return mv;
+		}
+		boolean success = authService.changePassword(request, session);
+		if (success) {
+			mv.setViewName("userlanding"); // Redirect to user landing page after successful password change
+		} else {
+			mv.setViewName("ChangePass"); // Redirect back to change password page on failure
+		}
+		return mv;
 	}
 
 }

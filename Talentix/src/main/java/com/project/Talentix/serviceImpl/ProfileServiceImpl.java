@@ -3,10 +3,13 @@ package com.project.Talentix.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.Talentix.models.Token;
 import com.project.Talentix.models.User;
 import com.project.Talentix.repo.UserRepo;
 import com.project.Talentix.request.UpdateProfileRequest;
 import com.project.Talentix.service.ProfileService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class ProfileServiceImpl implements ProfileService {
@@ -15,9 +18,14 @@ public class ProfileServiceImpl implements ProfileService {
 	    private UserRepo userRepo;
 
 	    @Override
-	    public void updateProfile(UpdateProfileRequest request) {
+	    public void updateProfile(UpdateProfileRequest request, HttpSession session) {
 	        // Suppose we identify the user by email (or you can use session ID or userId)
-	        User user = userRepo.findByEmail(request.getEmail());
+	    	Token token = (Token) session.getAttribute("token");
+	    	
+	    	int id = token.getId();
+	    	
+	        User user = userRepo.findById(id);
+	        
 	        if (user == null) {
 	            throw new RuntimeException("User not found!");
 	        }
@@ -27,9 +35,9 @@ public class ProfileServiceImpl implements ProfileService {
 	            user.setName(request.getName());
 	        }
 
-	        if (request.getPassword() != null && !request.getPassword().isEmpty()) {
-	            user.setPassword(request.getPassword());
-	        }
+//	        if (request.getPassword() != null && !request.getPassword().isEmpty()) {
+//	            user.setPassword(request.getPassword());
+//	        }
 
 	        if (request.getPhoneNumber() != null && !request.getPhoneNumber().isEmpty()) {
 	            user.setPhoneNumber(Integer.parseInt(request.getPhoneNumber()));

@@ -25,7 +25,7 @@
     </nav>
 
     <div class="nav-buttons">
-      <button class="username-btn" id="userNameBtn">Hi, Sudhakar</button>
+      <button class="username-btn" id="userNameBtn">Hi</button>
       <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="User Icon" class="user-icon" id="userIcon">
     </div>
   </header>
@@ -53,9 +53,9 @@
   <div class="dropdown-menu" id="userDropdown">
     <ul>
       <li><a href="${pageContext.request.contextPath}/updateProfilePage">Edit Profile</a></li>
-      <li><a href="../imp/appliedjobs.html">Applied Jobs</a></li>
-      <li><a href="../imp/settings.html">Settings</a></li>
-      <li><a href="../imp/logout.html">Logout</a></li>
+      <li><a href="${pageContext.request.contextPath}/changePasswordPage">Change Password</a></li>
+      <li><a href="${pageContext.request.contextPath}/appliedJobs">Applied Jobs</a></li>
+      <li><a href="${pageContext.request.contextPath}/api/auth/logout">Logout</a></li>
     </ul>
   </div>
 

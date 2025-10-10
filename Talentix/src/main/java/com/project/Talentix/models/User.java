@@ -2,6 +2,8 @@ package com.project.Talentix.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -22,20 +24,18 @@ public class User {
 	String role;
 	
 	String CompanyName; // for employer
-	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<JobApplications> applications;
 
     
-	@OneToMany(mappedBy = "postedBy", cascade = CascadeType.ALL, orphanRemoval = true)
-    @ElementCollection
-	List<Job> jobsPosted; // for employer
-	
-    String resume;
-	
-	 @ManyToMany(mappedBy = "users")
-    @ElementCollection
-	List<Notification> notifications;
+    @OneToMany(mappedBy = "postedBy", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore // prevent infinite recursion
+    private List<Job> jobsPosted;
+
+    private String resume;
+
+    // 🔹 Many-to-many notifications (assuming Notification entity exists)
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
+    private List<Notification> notifications;
 
 	 
 	 // Getters & Setters
@@ -102,15 +102,6 @@ public class User {
 	 }
 
 
-
-	 public List<JobApplications> getApplications() {
-		return applications;
-	}
-
-	 public void setApplications(List<JobApplications> applications) {
-		 this.applications = applications;
-	 }
-
 	 public List<Job> getJobsPosted() {
 		 return jobsPosted;
 	 }
@@ -147,7 +138,6 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.role = role;
 		CompanyName = companyName;
-		this.applications = applications;
 		this.jobsPosted = jobsPosted;
 		this.resume = resume;
 		this.notifications = notifications;

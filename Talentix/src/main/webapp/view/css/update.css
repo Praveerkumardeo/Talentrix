@@ -8,7 +8,7 @@
 
 /* ====== BODY STYLING ====== */
 body {
-  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  background: linear-gradient(135deg, #6366f1, #ec4899);
   color: #333;
   min-height: 100vh;
   display: flex;
@@ -20,43 +20,42 @@ body {
 /* ====== CONTAINER ====== */
 .container {
   width: 100%;
-  max-width: 700px;
+  max-width: 650px;
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  color: white;
+  backdrop-filter: blur(12px);
+  padding: 40px 35px;
+  border-radius: 18px;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
+  color: #fff;
   animation: fadeIn 0.4s ease;
 }
 
 /* ====== HEADER ====== */
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   color: #fff;
   font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
-/* ====== FORM STRUCTURE ====== */
-.form-group {
-  margin-bottom: 20px;
-  text-align: left;
+/* ====== FORM ELEMENTS ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 label {
-  display: block;
   font-weight: 600;
   color: #f3e8ff;
   margin-bottom: 6px;
+  display: block;
   font-size: 0.95rem;
 }
 
-input,
-textarea,
-select {
+input {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
@@ -68,54 +67,34 @@ select {
   transition: 0.3s;
 }
 
-input::placeholder,
-textarea::placeholder {
+input::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+input:focus {
   background: rgba(255, 255, 255, 0.35);
   border: 1px solid #c084fc;
 }
 
-/* ====== FORM BUTTONS ====== */
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-}
-
-.btn {
-  flex: 1;
-  margin: 0 5px;
+/* ====== SUBMIT BUTTON ====== */
+input[type="submit"] {
   background: linear-gradient(90deg, #8b5cf6, #9333ea);
-  color: white;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 8px;
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
   transition: 0.3s;
 }
 
-.btn:hover {
+input[type="submit"]:hover {
   background: linear-gradient(90deg, #9333ea, #7e22ce);
   transform: translateY(-2px);
 }
 
-.btn.cancel {
-  background: rgba(255, 255, 255, 0.25);
-  color: white;
-}
-
-.btn.cancel:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-}
-
-/* ====== FADE IN ANIMATION ====== */
+/* ====== ANIMATION ====== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -137,15 +116,12 @@ select:focus {
     font-size: 1.6rem;
   }
 
-  input,
-  textarea,
-  select {
+  input {
     font-size: 0.95rem;
   }
 
-  .btn {
+  input[type="submit"] {
     padding: 10px;
     font-size: 0.95rem;
   }
 }
-

@@ -38,7 +38,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (token.getRole().equals("employer")) return; // Employers cannot apply
 
         int userId = token.getId();
-        User user = userRepo.findById(userId).orElse(null);
+        User user = userRepo.findById(userId);
         Job job = jobRepo.findById(jobId);
 
         if (user == null || job == null) return;
@@ -46,7 +46,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         // Check if already applied
         String existing = jobApplicationRepo.findJobStatus(userId, jobId);
         if (existing == null) {
-            JobApplications application = new JobApplications(user, job, "Applied");
+            JobApplications application = new JobApplications(userId, jobId, "Applied");
             jobApplicationRepo.save(application);
         }
     }
@@ -70,11 +70,14 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<Job> viewApplications(HttpSession session) {
         Token token = (Token) session.getAttribute("token");
-        if (token == null) return null;
-        if (token.getRole().equals("employer")) return null;
+        
+        
+        if(token.getRole().equals("User")) {
+        	int userId = token.getId();
+            return jobApplicationRepo.findAppliedJobs(userId);
+        }
 
-        int userId = token.getId();
-        return jobApplicationRepo.findAppliedJobs(userId);
+        return null;
     }
 
     /**

@@ -13,7 +13,7 @@
     <h1>Send mail</h1>
     <p class="lead">Enter your details.</p>
 
-<form action="notification" method="post">
+<form action="/api/notifications/notification" method="post">
  <input type="text" name="userId" placeholder="User ID">
   <input type="text" name="message" placeholder="message">
   <button type="submit">Send</button>

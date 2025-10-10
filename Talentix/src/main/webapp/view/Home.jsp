@@ -61,7 +61,7 @@
 			</div>
 
 			<!-- Login Form -->
-			<form id="signInForm" class="form active" action="/login"
+			<form id="signInForm" class="form active" action="/api/auth/login"
 				method="post">
 				<label>Email</label> <input type="email" name="email"
 					placeholder="you@example.com" required> <label>Password</label>
@@ -72,7 +72,7 @@
 			</form>
 
 			<!-- Register User Form -->
-			<form id="userSignUpForm" class="form" action="/registerUser"
+			<form id="userSignUpForm" class="form" action="/api/auth/registerUser"
 				method="post">
 				<label>Full Name</label> <input type="text" name="name"
 					placeholder="John Doe" required> <label>Email</label> <input
@@ -87,7 +87,7 @@
 			</form>
 
 			<!-- Register Employer Form -->
-			<form id="employerSignUpForm" class="form" action="/registerEmployer"
+			<form id="employerSignUpForm" class="form" action="/api/auth/registerEmployer"
 				method="post">
 				
 				<label>Employer Name</label> <input type="text" name="name"

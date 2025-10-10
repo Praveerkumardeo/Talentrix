@@ -13,12 +13,18 @@
     <div class="sidebar">
       <h2 class="logo">Employer Dashboard</h2>
       <ul>
-        <li class="active"><a href="${pageContext.request.contextPath}/view/employer.jsp">My Jobs</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/Employerapplications.jsp">Applications</a></li>
+        <li class="active"><a href="${pageContext.request.contextPath}//employer">My Jobs</a></li>
+        <li><a href="${pageContext.request.contextPath}/employerApplications">Applications</a></li>
 
       </ul>
       <button class="back-btn" onclick="window.location.href='${pageContext.request.contextPath}/'">
         Back to Portal</button>
+
+        <button class="signout-btn" onclick="window.location.href='${pageContext.request.contextPath}/changePasswordPage'">
+        Change Password</button>
+
+        <button class="signout-btn" onclick="window.location.href='${pageContext.request.contextPath}/updateProfilePage'">
+        Edit Profile</button>
 
       <button class="signout-btn" onclick="window.location.href='${pageContext.request.contextPath}/logout'">
         Sign Out</button>

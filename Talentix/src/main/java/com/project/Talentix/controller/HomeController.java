@@ -20,76 +20,160 @@ public class HomeController {
 
 	@Autowired
 	AuthService authService;
-	
+
 	// user first lands to home page
 	// there will be options to register (user/employer) or login
-	
-	// after login, user will be redirected to their respective pages based on their roles
+
+	// after login, user will be redirected to their respective pages based on their
+	// roles
 	// user -> About
 	// employer -> Employer
-	
-	
+
 	@RequestMapping("/")
 	public String home() {
 		return "Home"; // returns the view name
 	}
-	
-	
+
 	@RequestMapping("/sendNotification")
 	public String sendNotification(HttpSession session) {
 		Token token = (Token) session.getAttribute("token");
-    	if(token == null) {
-    		return "Login"; // your login JSP page
-    	}
-    	if(token.getRole().equals("User")) {
+		if (token == null) {
+			return "Home"; // your login JSP page
+		}
+		if (token.getRole().equals("User")) {
 			return "UserHome"; // your user JSP page
 		}
 		return "Notification"; // returns the view name
 	}
 
-    @RequestMapping("/updateProfilePage")
-    public String showUpdateProfilePage(HttpSession session) {
-    	Token token = (Token) session.getAttribute("token");
-    	if(token == null) {
-    		return "Login"; // your login JSP page
-    	}
-    	
-        return "UpdateProfile"; // shows the JSP page
-    }
-    
-    
-    @RequestMapping("/jobs")
-    public String showJobsPage(HttpSession session) {
+	@RequestMapping("/updateProfilePage")
+	public String showUpdateProfilePage(HttpSession session) {
 		Token token = (Token) session.getAttribute("token");
-		if(token == null) {
-			return "Login"; // your login JSP page
+		if (token == null) {
+			return "Home"; // your login JSP page
+		} else if (token.getRole().equals("ADMIN")) {
+			return "Admin"; // your user JSP page
+		} else if (token.getRole().equals("Employer")) {
+			return "UpdateProfileEmployer"; // your user JSP page
 		}
-		
+
+		else if (token.getRole().equals("User")) {
+			return "UpdateProfileUser"; // your user JSP page
+		} else {
+			return "Home";
+		}
+
+	}
+
+	@RequestMapping("/jobs")
+	public String showJobsPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token == null) {
+			return "Home"; // your login JSP page
+		}
+
 		return "Jobs"; // shows the JSP page
 	}
-    
-    @RequestMapping("/about")
-    public String showAboutPage() {
-    	return "About"; // shows the JSP page
-    }
-    
-    @RequestMapping("/companies")
-    public String showCompaniesPage() {
+
+	@RequestMapping("/about")
+	public String showAboutPage() {
+		return "About"; // shows the JSP page
+	}
+
+	@RequestMapping("/companies")
+	public String showCompaniesPage() {
 		return "Companies"; // shows the JSP page
 	}
-    
-    @RequestMapping("/createJob")
-    public String showCreateJobPage(HttpSession session) {
-    			Token token = (Token) session.getAttribute("token");
-    			if(token == null) {
-					return "Home"; // your login JSP page
-				}
-    			if(token.getRole().equals("ADMIN") || token.getRole().equals("Employer")) {
-					return "AddJob"; // your user JSP page
-				}
-				
-				return "Home"; // shows the JSP page
-    }
+
+	@RequestMapping("/createJob")
+	public String showCreateJobPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token == null) {
+			return "Home"; // your login JSP page
+		}
+		if (token.getRole().equals("ADMIN") || token.getRole().equals("Employer")) {
+			return "AddJob"; // your user JSP page
+		}
+
+		return "Home"; // shows the JSP page
+	}
+
+	@RequestMapping("/changePasswordPage")
+	public String showChangePasswordPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token == null) {
+			return "Home"; // your login JSP page
+		}
+
+		return "ChangePass"; // shows the JSP page
+	}
+
+	
+	
+	@RequestMapping("/adminUser")
+	public String showAdminUserPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token.getRole().equals("ADMIN")) {
+			return "AdminUser"; // your user JSP page
+		}
+		return "Home"; // shows the JSP page
+	}
+
+	@RequestMapping("/adminJobs")
+	public String showAdminJobPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token.getRole().equals("ADMIN")) {
+			return "Admin"; // your user JSP page
+		}
+		return "Home"; // shows the JSP page
+	}
+
+	@RequestMapping("/adminApplications")
+	public String showAdminApplicationsPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token.getRole().equals("ADMIN")) {
+			return "AdminApplications"; // your user JSP page
+		}
+		return "Home"; // shows the JSP page
+	}
+	
+	@RequestMapping("/employer")
+	public String showEmployerPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token.getRole().equals("ADMIN")) {
+			return "Employer"; // your user JSP page
+		}
+		return "Home"; // shows the JSP page
+	}
+
+	
+	@RequestMapping("/employerApplications")
+	public String showEmployerApplicationsPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token.getRole().equals("ADMIN")) {
+			return "Employerapplication"; // your user JSP page
+		}
+		return "Home"; // shows the JSP page
+	}
+	
+	
+	@RequestMapping("/appliedJobs")
+	public String showAppliedJobPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token.getRole().equals("User")) {
+			return "ApplyJob"; // your user JSP page
+		}
+		return "Home"; // shows the JSP page
+	}
+	
+	@RequestMapping("/userlanding")
+		public String showUserLandingPage(HttpSession session) {
+			Token token = (Token) session.getAttribute("token");
+			if (token.getRole().equals("User")) {
+				return "userlanding"; // your user JSP page
+			}
+			return "Home"; // shows the JSP page
+	}
 
 
 }

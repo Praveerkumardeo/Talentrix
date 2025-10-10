@@ -20,9 +20,10 @@ public interface JobRepo extends JpaRepository<Job, Integer> {
     @Query("SELECT j FROM Job j JOIN j.requiredSkills s WHERE s = :skill")
     List<Job> findBySkill(@Param("skill") String skill);
 
-
-
-    
     
     Job findById(int id);
+
+    @Query("SELECT j FROM Job j")
+    List<Job> findAlljobs();
+
 }
