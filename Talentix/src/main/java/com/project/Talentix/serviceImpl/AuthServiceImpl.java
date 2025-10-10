@@ -37,6 +37,8 @@ public class AuthServiceImpl implements AuthService {
 		return new Token("User", user.getId());
 	}
 	
+	
+	
 	@Override
 	public Token RegisterEmployer(EmployerRegstrationRequest request) {
 		String email = request.getEmail();

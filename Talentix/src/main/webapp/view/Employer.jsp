@@ -13,7 +13,7 @@
     <div class="sidebar">
       <h2 class="logo">Employer Dashboard</h2>
       <ul>
-        <li class="active"><a href="${pageContext.request.contextPath}//employer">My Jobs</a></li>
+        <li class="active"><h1>My Jobs</h1></li>
         <li><a href="${pageContext.request.contextPath}/employerApplications">Applications</a></li>
 
       </ul>

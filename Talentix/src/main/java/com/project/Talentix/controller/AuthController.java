@@ -53,7 +53,8 @@ public class AuthController {
 		Token token = authService.Login(req);
 		ModelAndView mv = new ModelAndView();
 		if (token == null) {
-			mv.setViewName("Home"); // your login JSP page
+			mv.setViewName("HomeInvalid");
+			return mv;// your login JSP page
 		}
 		session.setAttribute("token", token);
 		if (token.getRole().equals("ADMIN")) {

@@ -51,6 +51,7 @@
 					alt="logo" class="modal-logo">
 				<h2>Welcome to JobPortal</h2>
 				<p>Sign in to your account or create a new one to get started</p>
+				<h1>Invalid data</h1>
 			</div>
 
 			<div class="tab-buttons">
@@ -63,6 +64,7 @@
 			<!-- Login Form -->
 			<form id="signInForm" class="form active" action="/api/auth/login"
 				method="post">
+				
 				<label>Email</label> <input type="email" name="email"
 					placeholder="you@example.com" required> <label>Password</label>
 				<input type="password" name="password" placeholder="••••••••"
@@ -109,110 +111,7 @@
 			</form>
 		</div>
 	</div>
-	
-	
-	<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Login Form Validation
-    const signInForm = document.getElementById("signInForm");
-    signInForm.addEventListener("submit", function (e) {
-        const email = this.email.value.trim();
-        const password = this.password.value.trim();
-
-        if (!validateEmail(email)) {
-            e.preventDefault();
-            alert("Please enter a valid email address.");
-            return;
-        }
-
-        if (password.length < 6) {
-            e.preventDefault();
-            alert("Password must be at least 6 characters.");
-            return;
-        }
-    });
-
-    // User Registration Form Validation
-    const userSignUpForm = document.getElementById("userSignUpForm");
-    userSignUpForm.addEventListener("submit", function (e) {
-        const name = this.name.value.trim();
-        const email = this.email.value.trim();
-        const phone = this.phoneNumber.value.trim();
-        const password = this.password.value.trim();
-
-        if (name.length < 3) {
-            e.preventDefault();
-            alert("Full Name must be at least 3 characters.");
-            return;
-        }
-
-        if (!validateEmail(email)) {
-            e.preventDefault();
-            alert("Please enter a valid email address.");
-            return;
-        }
-
-        if (!/^\d{10}$/.test(phone)) {
-            e.preventDefault();
-            alert("Phone number must be 10 digits.");
-            return;
-        }
-
-        if (password.length < 6) {
-            e.preventDefault();
-            alert("Password must be at least 6 characters.");
-            return;
-        }
-    });
-
-    // Employer Registration Form Validation
-    const employerSignUpForm = document.getElementById("employerSignUpForm");
-    employerSignUpForm.addEventListener("submit", function (e) {
-        const name = this.name.value.trim();
-        const companyName = this.companyName.value.trim();
-        const email = this.email.value.trim();
-        const phone = this.phoneNumber.value.trim();
-        const password = this.password.value.trim();
-
-        if (name.length < 3) {
-            e.preventDefault();
-            alert("Employer Name must be at least 3 characters.");
-            return;
-        }
-
-        if (companyName.length < 2) {
-            e.preventDefault();
-            alert("Company Name must be at least 2 characters.");
-            return;
-        }
-
-        if (!validateEmail(email)) {
-            e.preventDefault();
-            alert("Please enter a valid email address.");
-            return;
-        }
-
-        if (!/^\d{10}$/.test(phone)) {
-            e.preventDefault();
-            alert("Phone number must be 10 digits.");
-            return;
-        }
-
-        if (password.length < 6) {
-            e.preventDefault();
-            alert("Password must be at least 6 characters.");
-            return;
-        }
-    });
-
-    // Email validation function
-    function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-        return re.test(email);
-    }
-});
-</script>
-	
+	s
 
 	<script src="${pageContext.request.contextPath}/view/js/main.js"></script>
 </body>

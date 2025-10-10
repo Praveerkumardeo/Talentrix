@@ -33,6 +33,12 @@ public class HomeController {
 	public String home() {
 		return "Home"; // returns the view name
 	}
+	
+	@RequestMapping("/i")
+	public String homeI() {
+		return "HomeInvalid"; // returns the view name
+	}
+	
 
 	@RequestMapping("/sendNotification")
 	public String sendNotification(HttpSession session) {
@@ -85,18 +91,7 @@ public class HomeController {
 		return "Companies"; // shows the JSP page
 	}
 
-	@RequestMapping("/createJob")
-	public String showCreateJobPage(HttpSession session) {
-		Token token = (Token) session.getAttribute("token");
-		if (token == null) {
-			return "Home"; // your login JSP page
-		}
-		if (token.getRole().equals("ADMIN") || token.getRole().equals("Employer")) {
-			return "AddJob"; // your user JSP page
-		}
-
-		return "Home"; // shows the JSP page
-	}
+	
 
 	@RequestMapping("/changePasswordPage")
 	public String showChangePasswordPage(HttpSession session) {
@@ -140,18 +135,18 @@ public class HomeController {
 	@RequestMapping("/employer")
 	public String showEmployerPage(HttpSession session) {
 		Token token = (Token) session.getAttribute("token");
-		if (token.getRole().equals("ADMIN")) {
+		if (token.getRole().equals("Employer")) {
 			return "Employer"; // your user JSP page
 		}
 		return "Home"; // shows the JSP page
 	}
 
 	
-	@RequestMapping("/employerApplications")
+    @RequestMapping("/employerApplications")
 	public String showEmployerApplicationsPage(HttpSession session) {
 		Token token = (Token) session.getAttribute("token");
-		if (token.getRole().equals("ADMIN")) {
-			return "Employerapplication"; // your user JSP page
+		if (token.getRole().equals("Employer")) {
+			return "Employerapplications"; // your user JSP page
 		}
 		return "Home"; // shows the JSP page
 	}
@@ -175,5 +170,17 @@ public class HomeController {
 			return "Home"; // shows the JSP page
 	}
 
+    @RequestMapping("/createJob")
+	public String showCreateJobPage(HttpSession session) {
+		Token token = (Token) session.getAttribute("token");
+		if (token == null) {
+			return "Home"; // your login JSP page
+		}
+		if (token.getRole().equals("ADMIN") || token.getRole().equals("Employer")) {
+			return "AddJob"; // your user JSP page
+		}
+
+		return "Home"; // shows the JSP page
+	}
 
 }
